@@ -2,6 +2,26 @@
 
 > CSS-based circles around content
 
+## Usage
+
+**Install it:**
+
+```
+npm install git+ssh://git@github.com/toast38coza/vue-circles.git
+```
+
+**Use it:**
+
+```
+import VueCircles from 'vue-circles/src/components/Circle'
+
+export default {
+  components: { VueCircles },
+  ...
+}
+```
+
+
 ## Build Setup
 
 ``` bash

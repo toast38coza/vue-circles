@@ -18,11 +18,36 @@
       <hr/>
     </div>
     <center>
-    <vue-circle
-      :text='text'
-      :size='selectedSize'
-      :color='selectedColor'
-      :percent-complete='percentNumber' ></vue-circle>
+      <div>
+        <h2>Customize</h2>
+        <vue-circle
+          :text='text'
+          :size='selectedSize'
+          :color='selectedColor'
+          :percent-complete='percentNumber' ></vue-circle>
+      </div>
+      <div style='clear:both;' ></div>
+      <div>
+        <h2>Variations</h2>
+        <h3>Size:</h3>
+        <div v-for='size in sizes'>
+          <vue-circle
+          :text='size'
+          :size='size'
+          :color='selectedColor'
+          :percent-complete='percentNumber' ></vue-circle>
+        </div>
+        <div style='clear:both;' >
+          <h3>Color:</h3>
+          <div v-for='color in colors'>
+            <vue-circle
+            :text='color'
+            :size='selectedSize'
+            :color='color'
+            :percent-complete='percentNumber' ></vue-circle>
+          </div>
+        </div>
+      </div>
     </center>
   </div>
 </template>
