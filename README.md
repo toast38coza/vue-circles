@@ -1,6 +1,6 @@
 # vue-circles
 
-> CSS-based circles around content
+> CSS-based circles around content. Based on: http://circle.firchow.net/
 
 ## Usage
 

@@ -9,7 +9,6 @@
       </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'VueCircle',
@@ -17,7 +16,8 @@ export default {
     percentComplete: { type: Number, required: true },
     size: { type: String, default: 'medium' },
     color: { type: String, default: 'medium' },
-    text: { type: [String, Boolean], default: false }
+    text: { type: [String, Boolean], default: false },
+    dark: { type: Boolean, default: false }
   },
   computed: {
     classObject () {
@@ -27,11 +27,11 @@ export default {
         'big': this.size === 'big',
 
         'green': this.color === 'green',
-        'orange': this.color === 'orange'
+        'orange': this.color === 'orange',
+        'dark': this.dark
       }
 
       let percent = Math.min(100, this.percentComplete)
-      console.log(percent)
       cls['p' + percent] = true
       return cls
     }

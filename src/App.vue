@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>
+    <div class='light' >
       Text: <input v-model='text' />
       Percent: <input type='number' v-model='percent' />
       Size:
@@ -17,38 +17,46 @@
       </select>
       <hr/>
     </div>
-    <center>
-      <div>
-        <h2>Customize</h2>
-        <vue-circle
-          :text='text'
-          :size='selectedSize'
-          :color='selectedColor'
-          :percent-complete='percentNumber' ></vue-circle>
-      </div>
-      <div style='clear:both;' ></div>
-      <div>
-        <h2>Variations</h2>
-        <h3>Size:</h3>
-        <div v-for='size in sizes'>
+
+    <div v-for='theme in lightdark' :class='theme' >
+      <center>
+        <div>
+          <h2>Customize</h2>
           <vue-circle
-          :text='size'
-          :size='size'
-          :color='selectedColor'
-          :percent-complete='percentNumber' ></vue-circle>
-        </div>
-        <div style='clear:both;' >
-          <h3>Color:</h3>
-          <div v-for='color in colors'>
-            <vue-circle
-            :text='color'
+            :text='text'
             :size='selectedSize'
-            :color='color'
+            :color='selectedColor'
+            :dark='isDarkCircle(theme)'
+            :percent-complete='percentNumber' ></vue-circle>
+        </div>
+        <div style='clear:both;' ></div>
+        <div>
+          <h2>Variations</h2>
+          <h3>Size:</h3>
+          <div v-for='size in sizes'>
+            <vue-circle
+            :text='size'
+            :size='size'
+            :color='selectedColor'
+            :dark='isDarkCircle(theme)'
             :percent-complete='percentNumber' ></vue-circle>
           </div>
+          <div style='clear:both;' >
+            <h3>Color:</h3>
+            <div v-for='color in colors'>
+              <vue-circle
+              :text='color'
+              :size='selectedSize'
+              :color='color'
+              :dark='isDarkCircle(theme)'
+              :percent-complete='percentNumber' ></vue-circle>
+            </div>
+          </div>
+          <div style='clear:both;' ></div>
         </div>
-      </div>
-    </center>
+      </center>
+    </div>
+
   </div>
 </template>
 
@@ -67,7 +75,16 @@ export default {
       colors: ['default', 'green', 'orange'],
       selectedSize: 'big',
       selectedColor: 'default',
-      text: null
+      text: null,
+      lightdark: ['light', 'dark-area']
+    }
+  },
+  methods: {
+    isDarkCircle (isDark) {
+      if (isDark === 'dark-area') {
+        return true
+      }
+      return false
     }
   },
   computed: {
@@ -86,5 +103,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.dark-area {
+    background-color: #666;
+    padding: 140px 20px 20px 20px;
+    margin-bottom: 160px;
 }
 </style>
